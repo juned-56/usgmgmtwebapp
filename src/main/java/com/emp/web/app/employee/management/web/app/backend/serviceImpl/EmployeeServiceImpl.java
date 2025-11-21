@@ -53,4 +53,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void deleteEmployee(long id) {
         employeeRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<Employee> findByEmail(String email) {
+        Optional<Employee> employee = employeeRepository.findByEmail(email);
+        if(employee.isPresent()){
+            return employee;
+        }
+        throw new ResourceNotFoundException("User Not found by this email");
+    }
 }

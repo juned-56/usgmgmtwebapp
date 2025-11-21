@@ -10,4 +10,5 @@ public interface EmployeeService {
     public List<Employee> getAllEmployess();
     public Optional<Employee> getEmployeeById(long id);
     public void deleteEmployee(long id);
+    public Optional<Employee> findByEmail(String email);
 }
