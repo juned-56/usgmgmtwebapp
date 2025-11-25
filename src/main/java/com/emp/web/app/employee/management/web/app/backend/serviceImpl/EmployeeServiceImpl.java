@@ -17,17 +17,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
     @Override
     public Employee addNewEmployee(Employee emp) {
-       return employeeRepository.save(emp);
+            return employeeRepository.save(emp);
     }
 
     @Override
     public Employee updateEmployee(long id, Employee emp) {
         Optional<Employee> employee = getEmployeeById(id);
         if(employee.isPresent()){
-           Employee existingEmployee = employee.get();
-           existingEmployee.setFirstName(emp.getFirstName());
-           existingEmployee.setLastName(emp.getLastName());
-           existingEmployee.setEmail(emp.getEmail());
+            Employee existingEmployee = employee.get();
+            existingEmployee.setFirstName(emp.getFirstName());
+            existingEmployee.setLastName(emp.getLastName());
+            existingEmployee.setEmail(emp.getEmail());
             return employeeRepository.save(existingEmployee);
         }else {
             throw new ResourceNotFoundException("Employee not found");
