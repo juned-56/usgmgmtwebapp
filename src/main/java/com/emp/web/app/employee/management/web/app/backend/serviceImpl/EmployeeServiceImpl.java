@@ -17,6 +17,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
     @Override
     public Employee addNewEmployee(Employee emp) {
+        Optional<Employee> existingEmail = employeeRepository.findByEmail(emp.getEmail());
+        if(existingEmail.isPresent()){
+            throw new ResourceNotFoundException("Email already registred" + emp.getEmail());
+        }
             return employeeRepository.save(emp);
     }
 
